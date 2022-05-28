@@ -8,7 +8,7 @@ If you have any critiques or suggestions, please leave a comment so that I can c
 ### Hardware List
 
 #### Raspberry Pi 4 Model B
-The Raspberry Pi at the heart of this guide is the [Raspberry Pi Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), suggested to be the 4 or 8 GB version.  The Pi is a low-power computing device running a fast ARM64 chip, and is able to serve multiple media streams simultaneously.
+The device at the heart of this guide is the [Raspberry Pi Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), suggested to be the 4 or 8 GB version.  The Pi is a low-power computing device running a fast ARM64 chip, and is able to serve multiple media streams simultaneously.
 
 #### MicroSD Card
 The MicroSD card can be any size above 32GB, which is the minimum recomendation for this guide.  A U3/V30 speed rating is recomended for good filesystem performance.
@@ -48,7 +48,8 @@ The MicroSD card is small and slow.  For utilizing an external HDD as your main 
 2. Connect via the hostname
 
 ## Running the Install Script
-
+Once logged in, running the install script is one command:
+> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh | sudo bash
 
 ## Configuring the Services
 ### Jackett
