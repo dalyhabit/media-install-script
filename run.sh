@@ -184,6 +184,7 @@ cd ${OLDPWD}
 curl -I http://localhost:9091 >/dev/null 2> /dev/null
 while [[  $? -ne 0 ]]; do
     sleep 5
+    echo "Waiting 5s for transmission to come online..."
     curl -I http://localhost:9091 >/dev/null 2> /dev/null
 done
 
