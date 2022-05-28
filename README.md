@@ -44,8 +44,16 @@ The MicroSD card is small and slow.  For utilizing an external HDD as your main 
 4. Attach the power and ethernet cables, and (optional) connect a keyboard and monitor.
 
 ## Logging in
-1. Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows), or Terminal for Mac, or your favorite TTY if using Linux.
-2. Connect via the hostname
+Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows), or Terminal for Mac, or your favorite TTY if using Linux.
+### Connect via hostname (1st Method)
+1. Use "ubuntu" as Host Name in PuTTY, or type `ssh ubuntu@ubuntu` into Terminal if using Mac
+2. If you are prompted for a password, your router has found the Rasperry Pi on the network and you can proceed to ["Running the Install Script"](#running-the-install-script).
+3. If you could not connect, you must find the IP address of the Raspberry Pi on your network.
+
+### Connect via IP Address (2nd Method)
+1. If your router has an app or web page that allows you to see devices, look for a device labeled "Ubuntu" or has a MAC/hardware address starting with "e4:5f:01".
+2. Alternatively, you can attach a monitor and keyboard to the Pi.  The default username is `ubuntu` and the default password is `ubuntu`. You will be asked to change the password once you log in.  Once the password has changed, type the command `ip addr show | grep eth0` and find the IP address beginning with `192.168`, `172.`, or `10.`
+3. Return to your computer and provide the IP address into PuTTY or type `ssh ubuntu@xxx.xxx.xxx.xx`, replacing the `x` with the IP address you found.
 
 ## Running the Install Script
 Once logged in, running the install script is one command:
