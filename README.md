@@ -47,7 +47,7 @@ The MicroSD card is small and slow.  For utilizing an external HDD as your main 
 Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows), or Terminal for Mac, or your favorite TTY if using Linux.
 ### Connect via hostname (1st Method)
 1. Use "ubuntu" as Host Name in PuTTY, or type `ssh ubuntu@ubuntu` into Terminal if using Mac
-2. If you are prompted for a password, your router has found the Rasperry Pi on the network and you can proceed to ["Running the Install Script"](#running-the-install-script).
+2. If you are prompted for a password, your router has found the Rasperry Pi on the network and you can proceed to ["Running the Install Script"](#running-the-install-script).  The default password is `ubuntu`.
 3. If you could not connect, you must find the IP address of the Raspberry Pi on your network.
 
 ### Connect via IP Address (2nd Method)
