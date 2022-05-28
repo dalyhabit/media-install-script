@@ -21,7 +21,7 @@ cd media-install-script
 git submodule init
 # Run the full installer
 chmod +x run.sh
-bash run.sh
+source run.sh
 
 # Go back to user pwd
 cd $oldcwd
