@@ -18,7 +18,7 @@ cd /tmp
 git clone https://gitlab.com/mediaguides/media-install-script.git
 # Download the submodules
 cd media-install-script
-git submodule init
+git submodule update
 # Run the full installer
 chmod +x run.sh
 bash run.sh
