@@ -56,8 +56,10 @@ Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com
 3. Return to your computer and provide the IP address into PuTTY or type `ssh ubuntu@xxx.xxx.xxx.xx`, replacing the `x` with the IP address you found.
 
 ## Running the Install Script
-Once logged in, running the install script is one command:
-> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh | sudo bash
+Once logged in, running the install script is just two commands:
+> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh
+
+> sudo bash weblaunch.sh
 
 ## Configuring the Services
 ### Jackett
