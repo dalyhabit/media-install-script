@@ -168,6 +168,7 @@ version: '3.3'
 services:""" > ${appdata}/docker-compose.yml
 
 [ ${watchtower+x} ] && echo -e "$watchtower" >> ${appdata}/docker-compose.yml
+[ ${filebrowser+x} ] && echo -e "$filebrowser" >> ${appdata}/docker-compose.yml
 [ ${jackett+x} ] && echo -e "$jackett" >> ${appdata}/docker-compose.yml
 [ ${sonarr+x} ] && echo -e "$sonarr" >> ${appdata}/docker-compose.yml
 [ ${radarr+x} ] && echo -e "$radarr" >> ${appdata}/docker-compose.yml
