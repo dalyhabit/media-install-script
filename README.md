@@ -1,7 +1,7 @@
-# Raspberry Pi Media Seedbox Guide
+# Raspberry Pi Media Streambox Guide
 
 ## Introduction
-This guide is a successor to the original guide available on [r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible.
+This guide is a successor to the [original guide available on r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible.
 
 The install script is compatible with any Ubuntu host, not just the Raspberry Pi.  If you have an extra PC around and would prefer to use that instead, follow the [official Ubuntu server install guide](https://ubuntu.com/tutorials/install-ubuntu-server) and skip to [running the install script](#running the install script).
 
@@ -13,17 +13,17 @@ If you have any critiques or suggestions, please leave a comment so that I can c
 The device at the heart of this guide is the [Raspberry Pi Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), suggested to be the 4 or 8 GB version.  The Pi is a low-power computing device running a fast ARM64 chip, and is able to serve multiple media streams simultaneously.
 
 #### MicroSD Card
-The MicroSD card can be any size above 32GB, which is the minimum recomendation for this guide.  A U3/V30 speed rating is recomended for good filesystem performance.
+The MicroSD card can be any size above 32GB, which is the minimum recommendation for this guide.  A U3/V30 speed rating is recommended for good filesystem performance.
 
 **Recommendation**: Sandisk Extreme microSDXC [32GB](https://amzn.to/3lU72Xm)/[64GB](https://amzn.to/3MYCYFY).
 
 #### Case, Fan & Power Supply
-The case is technically optional, but recomended to prevent desk accumulation.  A fan or aluminum heat fin is recomended (ideally both) to dissappate the heat produced by the chip, especially if utilizing transcoding.  Pick a power supply able to deliver at least 15 Watts.
+The case is technically optional but is recommended to prevent dust accumulation.  A fan or aluminum heat fin is recomended (ideally both) to dissipate the heat produced by the chip, especially if utilizing transcoding.  Pick a power supply able to deliver at least 15 Watts.
 
 **Recommendation**: [iUniker Rasperry Pi Case & 17.5W Power Supply](https://amzn.to/38wB54A).
 
 #### External Hard Drive
-The MicroSD card is small and slow.  For utilizing an external HDD as your main media and database storage, at least 4TB is recomended but you can never have too much disk space.  I recommend buying at the top of your budget, because it is difficult to add more drives later.
+The MicroSD card is small and slow.  For utilizing an external HDD as your main media and database storage, at least 4TB is recommended but you can never have too much disk space.  I recommend buying at the top of your budget, because it is difficult to add more drives later.
 
 **Recommendation**: Western Digital Elements Desktop hard drive.  Available in [4](https://amzn.to/3x4c2PT)/[6](https://amzn.to/3GpV0OU)/[8](https://amzn.to/3lPf2Jg)/[10](https://amzn.to/3lNK4Br)/[12](https://amzn.to/38qq8kP)/[14](https://amzn.to/3N3Jmfq)/[16](https://amzn.to/3wVSm0v)/[18](https://amzn.to/3a2X8Aj)TB options, they frequently go on sale and are fairly quiet.
 
@@ -33,7 +33,7 @@ The MicroSD card is small and slow.  For utilizing an external HDD as your main 
 2. Download the official [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and install/run it
 3. [Click "Choose OS"](./images/imager_1.png)
 4. [Select "Other general-purpose OS"](./images/imager_2.png)
-5. [Select "Ubuntu"](./images/imager_3.png)
+5. [Select "Ubuntu"](https://gitlab.com/mediaguides/media-install-script/-/raw/master/images/imager_3.png)
 6. [Select "Ubuntu Server 22.04 LTS"](./images/imager_4.png)
 7. [Click "Choose Storage"](./images/imager_5.png) and select the SD card matching the capacity of yours.  If there is more than one option, be very careful and unplug any storage devices before proceeding.
 8. Click "Write" and wait for the drive to be formatted and written.
@@ -64,7 +64,7 @@ Once logged in, running the install script is just two commands:
 
 > curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh && sudo bash weblaunch.sh
 
-Follow the on-screen instructions.  If you get stuck, refer to the [debugging](#debugging) section.
+Follow the on-screen instructions.  If you get stuck, refer to the [debugging](#debugging) section or look at the comments.
 
 ## Configuring the Services
 From here on out, you can leave puTTY/ssh alone, the configuration can be done from a web browser.  Remember the hostname/ip address you connected to for the next section.
