@@ -121,7 +121,7 @@ fi
 
 read -p "Use filebrowser (web-based file management)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
-    watchtower=$(bash ./modules/generators/filebrowser.sh)
+    bash ./modules/configurators/filebrowser.sh && export filebrowser=$(bash ./modules/generators/filebrowser.sh)
 fi
 
 read -p "Use Jackett? [Y/n] " yn
