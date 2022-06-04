@@ -14,7 +14,7 @@ apt-get install git
 oldcwd=$(pwd)
 
 # Download the full installer
-if [[ ! -d /tmp/media/install-script ]]; then
+if [[ ! -d /tmp/media-install-script ]]; then
     cd /tmp
     git clone https://gitlab.com/mediaguides/media-install-script.git
 fi
