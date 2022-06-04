@@ -6,7 +6,7 @@ echo -e """  filebrowser:
     ports:
       - 8080:8080
     volumes:
-      - ${storage}:/storage
+      - ${storage}:/srv
       - ${config}/filebrowser:/config
     environment:
       - FB_BASEURL=/filebrowser
