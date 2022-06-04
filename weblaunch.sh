@@ -20,6 +20,7 @@ if [[ ! -d /tmp/media-install-script ]]; then
 fi
 # Download the submodules
 cd /tmp/media-install-script
+git submodule init
 git submodule update
 # Run the full installer
 chmod +x run.sh
