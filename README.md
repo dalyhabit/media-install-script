@@ -3,6 +3,8 @@
 ## Introduction
 This guide is a successor to the original guide available on [r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible.
 
+The install script is compatible with any Ubuntu host, not just the Raspberry Pi.  If you have an extra PC around and would prefer to use that instead, follow the [official Ubuntu server install guide](https://ubuntu.com/tutorials/install-ubuntu-server) and skip to [running the install script](#running the install script).
+
 If you have any critiques or suggestions, please leave a comment so that I can continue to improve this guide.
 
 ### Hardware List
@@ -56,14 +58,21 @@ Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com
 3. Return to your computer and provide the IP address into PuTTY or type `ssh ubuntu@xxx.xxx.xxx.xx`, replacing the `x` with the IP address you found.
 
 ## Running the Install Script
+The first thing you are required to do when logged in is to change the password.  When typing passwords in the Linux shell, no characters are displayed but your input is still recorded.
+
 Once logged in, running the install script is just two commands:
+
 > curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh
 
 > sudo bash weblaunch.sh
 
+Follow the on-screen instructions.  If you get stuck, refer to the [debugging](#debugging) section.
+
 ## Configuring the Services
+From here on out, you can leave puTTY/ssh alone, the configuration can be done from a web browser.  Remember the hostname/ip address you connected to for the next section.
+
 ### Jackett
-Jackett is only as good as the trackers you have added to it.  Navigate to `http://serverIP:9117` where `serverIP` is the IP address or local hostname of the Linux server.
+Jackett is only as good as the trackers you have added to it.  Navigate to `http://serverIP:9117` where `serverIP` is the IP address or hostname of the Linux server.
 
 Add a few indexers using the "add indexer" button.  It may feel like a good idea to add a lot, but that increases search times for every single search.
 
@@ -101,3 +110,14 @@ The only other difference is that you should use the `/storage/media/tv` directo
 
 If you opted for authentication on Radarr, you should do so on Sonarr with the **same** username and password.  Otherwise, some web browsers will get confused.
 
+## Appendix
+### Changing the docker-compose.yml
+
+In order to make changes to the runtime configuration, you will need to modify `docker-compose.yml`.  Connect in the same way you did to run the install script (puTTY/ssh) and type `sudo nano /app/docker-compose.yml`.  You will be dropped into a keyboard-only text editor.  Use the arrow keys to make changes, then save with `control-o`, `enter` and exit with `control-x`.
+
+Once changes are made, restart the runtime with the changes: `cd /app && sudo docker compose up -d`
+
+### Debugging
+#### `Waiting 5s for transmission to come online...`
+
+This bug is displayed when transmission does not completely finish initializing.  This could be due to a number of things, but the easiest way to check is to check the log.  Press `control-c` to break out of the install script, then type `docker logs -f transmission` and look for relevant log entries.  Specifically, look for `authentication failed`, `connection timed out`, or the last log entry for each startup (transmission will continue to restart even as it has errors).  The [official issues tracker](https://github.com/haugene/docker-transmission-openvpn/issues?q=is%3A+issue) is a good place to look for solutions.
