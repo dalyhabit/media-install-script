@@ -114,6 +114,15 @@ export config=$storage/$config
 export media=$storage/$media
 export downloads=$storage/downloads
 
+# create subdirs
+if [[ ! -d $media/tv ]]; then
+    mkdir $media/tv
+fi
+
+if [[ ! -d $media/movies ]]; then
+    mkdir $media/movies
+fi
+
 # prompt submodules
 read -p "Use Watchtower (enables auto-update)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
