@@ -62,9 +62,7 @@ The first thing you are required to do when logged in is to change the password.
 
 Once logged in, running the install script is just two commands:
 
-> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh
-
-> sudo bash weblaunch.sh
+> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh && sudo bash weblaunch.sh
 
 Follow the on-screen instructions.  If you get stuck, refer to the [debugging](#debugging) section.
 
@@ -79,10 +77,7 @@ Add a few indexers using the "add indexer" button.  It may feel like a good idea
 Congrats!  You now have a multi-tracker search engine at your fingertips, or more importantly, the fingertips of Sonarr and Radarr.  Keep this window open as we move to the next configuration step.
 
 ### Radarr
-
-Navigate to `http://serverIP:7878` in order to access the Radarr console.  We're going to change a few settings, starting with "Download Clients."
-
-Next, go to Indexers.  Enable "Show Advanced" at the top menu bar under search.  For each of the indexers you added to Jackett, do the following
+Navigate to `http://serverIP:7878` in order to access the Radarr console.  Next, go to Indexers.  Enable "Show Advanced" at the top menu bar under search.  For each of the indexers you added to Jackett, do the following
 
 * Press the add symbol
 * Select Torznab
@@ -97,9 +92,9 @@ You'll need to go back into Jackett, hit the wrench for the indexer causing the 
 
 Once done, it's time to add our first movie and define the destination paths for our downloads.
 
-Search up a movie (preferably one that's recent and has seeders) in the top bar and select the correct movie.  When the popup appears, click under "Root Folder" and select "Add a new path".  Fill in the typing bar with `/storage/media/movies/` and press "OK".  Select the quality profile desired (otherwise, it will select the most seeded) and check "Start search for missing movie".
+Search up a movie (preferably one that's recent and has seeders) in the top bar and select the correct movie.  When the popup appears, click under "Root Folder" and select "Add a new path".  Fill in the text field with `/storage/media/movies` and press "OK".  Select the quality profile desired (otherwise, it will select the most seeded) and check "Start search for missing movie".
 
-View your transmission progress at `http://serverIP:9091`.  The download should be added and everything should begin working.   When the download finishes, the file will be "hard linked" to the `/mnt/external/media/movies` directory in a new organized folder.  This enables you to seed your entire collection while also maintaining an organized file structure.  Deleting from the `/mnt/external/downloads` directory will **not** save you any space, because the two files point to the same 1's and 0's on your hard disk.  Similarly, when you want to delete a movie from your collection, make sure it is also deleted from `/mnt/data/downloads`.
+View your transmission progress at `http://serverIP:9091`.  The download should be added and everything should begin working.   When the download finishes, the file will be "hard linked" to the `/mnt/external/media/movies` directory in a new organized folder.  This enables you to seed your entire collection while also maintaining an organized file structure.  Deleting from the `/mnt/external/downloads` directory will **not** save you any space, because the two files point to the same 1's and 0's on your hard disk.  Additionally, when you want to delete a movie from your collection, make sure it is also deleted from `/mnt/data/downloads`.  If you opted to use filebrowser, you can delete from both of these directories at http://serverIP:8080
 
 Finally, we're going to authentication-lock Radarr by going to Settings -> General and selecting "Basic".  Choose a username and password, but be aware that Radarr does not transmit the password securely.  This is optional but highly recommended.
 
@@ -111,6 +106,10 @@ The only other difference is that you should use the `/storage/media/tv` directo
 If you opted for authentication on Radarr, you should do so on Sonarr with the **same** username and password.  Otherwise, some web browsers will get confused.
 
 ## Appendix
+### Downloading Misc Torrents in the VPN Tunnel
+
+The VPN tunnel is capable of downloading more than just media.  You can add torrent files and magnet URIs in transmission at http://serverIP:9091, then download them in filebrowser at http://serverIP:8080.
+
 ### Changing the docker-compose.yml
 
 In order to make changes to the runtime configuration, you will need to modify `docker-compose.yml`.  Connect in the same way you did to run the install script (puTTY/ssh) and type `sudo nano /app/docker-compose.yml`.  You will be dropped into a keyboard-only text editor.  Use the arrow keys to make changes, then save with `control-o`, `enter` and exit with `control-x`.
