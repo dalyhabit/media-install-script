@@ -14,10 +14,12 @@ apt-get install git
 oldcwd=$(pwd)
 
 # Download the full installer
-cd /tmp
-git clone https://gitlab.com/mediaguides/media-install-script.git
+if [[ ! -d /tmp/media/install-script ]]; then
+    cd /tmp
+    git clone https://gitlab.com/mediaguides/media-install-script.git
+fi
 # Download the submodules
-cd media-install-script
+cd /tmp/media-install-script
 git submodule update
 # Run the full installer
 chmod +x run.sh
