@@ -19,6 +19,19 @@ if [ $(whoami) != "root" ]; then
     exit
 fi
 
+echo "Updating package lists"
+# update package lists
+apt-get update > /dev/null
+# do a general update
+apt-get upgrade -y > /dev/null
+# test docker
+docker version > /dev/null 2>/dev/null
+if [ $? != 0 ]; then
+# install docker/docker-compose
+    chmod +x ./modules/installers/docker-install/install.sh
+    bash ./modules/installers/docker-install/install.sh > /dev/null
+fi
+
 # Check if we have a disk
 fdisk -l /dev/sda > /dev/null 2> /dev/null
 if [ $? = 0 ]; then
@@ -74,18 +87,6 @@ if [ $? = 0 ]; then
     fi
 fi
 
-echo "Updating package lists"
-# update package lists
-apt-get update > /dev/null
-# do a general update
-apt-get upgrade -y > /dev/null
-# test docker
-docker version > /dev/null 2>/dev/null
-if [ $? != 0 ]; then
-# install docker/docker-compose
-    chmod +x ./modules/installers/docker-install/install.sh
-    bash ./modules/installers/docker-install/install.sh > /dev/null
-fi
 # prompt filestore
 read -p "Enter location to create the compose file [/app]: " appdata
 [ "$appdata" = "" ] && appdata="/app"
