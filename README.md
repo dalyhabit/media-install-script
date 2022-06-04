@@ -33,7 +33,7 @@ The MicroSD card is small and slow.  For utilizing an external HDD as your main 
 2. Download the official [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and install/run it
 3. [Click "Choose OS"](./images/imager_1.png)
 4. [Select "Other general-purpose OS"](./images/imager_2.png)
-5. [Select "Ubuntu"](https://gitlab.com/mediaguides/media-install-script/-/raw/master/images/imager_3.png)
+5. [Select "Ubuntu"](./images/imager_3.png)
 6. [Select "Ubuntu Server 22.04 LTS"](./images/imager_4.png)
 7. [Click "Choose Storage"](./images/imager_5.png) and select the SD card matching the capacity of yours.  If there is more than one option, be very careful and unplug any storage devices before proceeding.
 8. Click "Write" and wait for the drive to be formatted and written.
