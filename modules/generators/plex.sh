@@ -11,5 +11,5 @@ echo -e """  plex:
       - ${config}/plex:/config
       - ${media}:/media:ro
     ports:
-        32400:32400
+      - 32400:32400
     restart: unless-stopped"""
