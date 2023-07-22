@@ -154,6 +154,11 @@ if [[ "$yn" =~ ^[yY]*$ ]]; then
     source ./modules/configurators/transmission.sh && export transmission=$(bash ./modules/generators/transmission.sh)
 fi
 
+read -p "Use Requestrr? [Y/n] " yn
+if [[ "$yn" =~ ^[yY]*$ ]]; then
+    source ./modules/configurators/requestrr.sh && export requestrr=$(bash ./modules/generators/requestrr.sh)
+fi
+
 read -p "Use Emby? [y/N] " yn
 if [[ "$yn" =~ ^[yY]$ ]]; then
     emby=$(bash ./modules/generators/emby.sh)
@@ -181,6 +186,7 @@ services:""" > ${appdata}/docker-compose.yml
 [ ${jackett+x} ] && echo -e "$jackett" >> ${appdata}/docker-compose.yml
 [ ${sonarr+x} ] && echo -e "$sonarr" >> ${appdata}/docker-compose.yml
 [ ${radarr+x} ] && echo -e "$radarr" >> ${appdata}/docker-compose.yml
+[ ${requestrr+x} ] && echo -e "$requestrr" >> ${appdata}/docker-compose.yml
 [ ${transmission+x} ] && echo -e "$transmission" >> ${appdata}/docker-compose.yml
 [ ${emby+x} ] && echo -e "$emby" >> ${appdata}/docker-compose.yml
 [ ${jellyfin+x} ] && echo -e "$jellyfin" >> ${appdata}/docker-compose.yml
