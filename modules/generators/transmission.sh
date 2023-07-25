@@ -2,6 +2,8 @@
 
 echo -e """  transmission:
     container_name: transmission
+    sysctls:
+      - "net.ipv6.conf.all.disable_ipv6=0"
     cap_add:
       - NET_ADMIN
     volumes:
