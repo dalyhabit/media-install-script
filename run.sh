@@ -40,8 +40,8 @@ if [ $? = 0 ]; then
     echo "Detected external device: '$drive'"
     read -p "Do you wish to format this drive? [y/N] " yn
     if [[ "$yn" =~ ^[yY]$ ]]; then
-        read -p "Enter the drive name to confirm format: " driveconfirm
-        if [[ $drive = $driveconfirm ]]; then
+        read -p "Are you sure you wish to format this drive? [y/N] " yn
+        if [[ "$yn" =~ ^[yY]$ ]]; then
             if [[ ! -d "/mnt/external" ]]; then
                 mkdir /mnt/external
             fi
