@@ -5,6 +5,7 @@ echo -e """  transmission:
     cap_add:
       - NET_ADMIN
     volumes:
+      - '/etc/openvpn/custom/:/etc/openvpn/custom/'
       - '${downloads}:/storage/downloads'
     environment:
       - OPENVPN_PROVIDER=${provider}
