@@ -156,7 +156,7 @@ fi
 
 read -p "Use Requestrr? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
-    source ./modules/configurators/requestrr.sh && export requestrr=$(bash ./modules/generators/requestrr.sh)
+    requestrr=$(bash ./modules/generators/requestrr.sh)
 fi
 
 read -p "Use Emby? [y/N] " yn
