@@ -62,7 +62,7 @@ The first thing you are required to do when logged in is to change the password.
 
 Once logged in, running the install script is just two commands:
 
-> curl -fsSL https://gitlab.com/mediaguides/media-install-script/-/raw/master/weblaunch.sh -o weblaunch.sh && sudo bash weblaunch.sh
+> curl -fsSL https://raw.githubusercontent.com/dalyhabit/media-install-script/master/weblaunch.s -o weblaunch.sh && sudo bash weblaunch.sh
 
 Follow the on-screen instructions.  If you get stuck, refer to the [debugging](#debugging) section or look at the comments.
 

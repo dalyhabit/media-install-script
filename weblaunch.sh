@@ -16,7 +16,7 @@ oldcwd=$(pwd)
 # Download the full installer
 if [[ ! -d /tmp/media-install-script ]]; then
     cd /tmp
-    git clone https://gitlab.com/mediaguides/media-install-script.git
+    git clone https://github.com/dalyhabit/media-install-script.git
 fi
 # Download the submodules
 cd /tmp/media-install-script
