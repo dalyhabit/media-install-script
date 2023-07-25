@@ -149,14 +149,14 @@ if [[ "$yn" =~ ^[yY]*$ ]]; then
     radarr=$(bash ./modules/generators/radarr.sh)
 fi
 
-read -p "Use Transmission? [Y/n] " yn
-if [[ "$yn" =~ ^[yY]*$ ]]; then
-    source ./modules/configurators/transmission.sh && export transmission=$(bash ./modules/generators/transmission.sh)
-fi
-
 read -p "Use Requestrr? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     requestrr=$(bash ./modules/generators/requestrr.sh)
+fi
+
+read -p "Use Transmission? [Y/n] " yn
+if [[ "$yn" =~ ^[yY]*$ ]]; then
+    source ./modules/configurators/transmission.sh && export transmission=$(bash ./modules/generators/transmission.sh)
 fi
 
 read -p "Use Emby? [y/N] " yn
