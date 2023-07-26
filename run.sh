@@ -151,7 +151,7 @@ fi
 
 read -p "Use Bazarr? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
-    radarr=$(bash ./modules/generators/bazarr.sh)
+    bazarr=$(bash ./modules/generators/bazarr.sh)
 fi
 
 read -p "Use Requestrr? [Y/n] " yn
