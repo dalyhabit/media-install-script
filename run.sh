@@ -50,7 +50,7 @@ if [ $? = 0 ]; then
                 read -p "We will format '$drive' for LVM, type 'confirm' to proceed. " confirm
                 if [[ "$confirm" = "confirm" ]]; then
                     dd if=/dev/zero of=/dev/sda count=8196 2> /dev/null
-                    pvcreate /dev/sda2 > /dev/null
+                    pvcreate /dev/sda > /dev/null
                     vgcreate LVMVolGroup /dev/sda > /dev/null
                     lvcreate -l 100%FREE -n storage LVMVolGroup > /dev/null
                     mkfs.ext4 /dev/LVMVolGroup/storage > /dev/null
