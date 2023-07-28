@@ -1,7 +1,9 @@
 # Raspberry Pi Media Streambox Guide
 
 ## Introduction
-This guide is a successor to the [original guide available on r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible.
+This project was originally forked from [https://gitlab.com/mediaguides/media-install-script/](https://gitlab.com/mediaguides/media-install-script/).
+
+This guide is a successor to this [original guide available on r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible. However, it is worth reading through the first guide to better understand what you're trying to accomplish by running the install script included in this project.
 
 The install script is compatible with any Ubuntu host, not just the Raspberry Pi.  If you have an extra PC around and would prefer to use that instead, follow the [official Ubuntu server install guide](https://ubuntu.com/tutorials/install-ubuntu-server) and skip to [running the install script](#running the install script).
 
@@ -56,6 +58,11 @@ Download an SSH client.  This can be [PuTTY for Window](https://www.puttygen.com
 1. If your router has an app or web page that allows you to see devices, look for a device labeled "Ubuntu" or has a MAC/hardware address starting with "e4:5f:01".
 2. Alternatively, you can attach a monitor and keyboard to the Pi.  The default username is `ubuntu` and the default password is `ubuntu`. You will be asked to change the password once you log in.  Once the password has changed, type the command `ip addr show | grep eth0` and find the IP address beginning with `192.168`, `172.`, or `10.`
 3. Return to your computer and provide the IP address into PuTTY or type `ssh ubuntu@xxx.xxx.xxx.xx`, replacing the `x` with the IP address you found.
+
+### Before Running the Install Script
+As stated above, this project was forked from an old Gitlab project. One of the first steps in this script will ask if you'd like to format your external hard drive. When I connected the hard drive I chose to use, the formatting part of this install script wasn't completely successful. Therefore, I chose to format the drive myself and tell the script to skip that step in the process.
+
+If you run into similar issues, I would suggest reading this guide to learn how to format a drive in linux: [https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux](https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux). You can nearly copy and paste every command in that guide. However, when choosing a location to mount the drive, chose `/mnt/external` instead of `mnt/data`. After formatting and mounting the drive, run `cd /mnt/external` to move to the external drive's mounted location, and then create the following directories using `mkdir`: `/downloads`, `/config`, `/media`, `/media/movies`, and `/media/tv`. If you can accomplish all of that successfully, you can run the install script and skip the drive formatting step.
 
 ## Running the Install Script
 The first thing you are required to do when logged in is to change the password.  When typing passwords in the Linux shell, no characters are displayed but your input is still recorded.
@@ -120,3 +127,10 @@ Once changes are made, restart the runtime with the changes: `cd /app && sudo do
 #### `Waiting 5s for transmission to come online...`
 
 This bug is displayed when transmission does not completely finish initializing.  This could be due to a number of things, but the easiest way to check is to check the log.  Press `control-c` to break out of the install script, then type `docker logs -f transmission` and look for relevant log entries.  Specifically, look for `authentication failed`, `connection timed out`, or the last log entry for each startup (transmission will continue to restart even as it has errors).  The [official issues tracker](https://github.com/haugene/docker-transmission-openvpn/issues?q=is%3A+issue) is a good place to look for solutions.
+
+
+#### `User and Group Permissions`
+
+Aside from the error above, the most likely reason you will run into errors is because of permissions problems. Because no computer is exactly the same, and I'm unsure what error you are seeing, I cannot tell you exactly how to fix it. However, the most common solution will be to make sure that the `app/` directory and everything in the `/mnt/external` directory are read/writeable by your user, whose `PUID` and `GUID` are (most likely) `1000` and whose names are both `ubuntu`. Before running the following commands, you must confirm your user and group's IDs and their names. If your group ID is not `1000` or your user's name is no `ubuntu`, replace `ubuntu` with your user's name in commands below. You may also need to edit you `docker-compose.yml` and swap all the `PUID`s and `GUID`s to match yours.
+
+Here is how you can change the ownership and permissions of a folder (in this example, I'm editing the `/app` directory): `sudo chgrp ubuntu /app` followed by `chmod g+rwx /app`.
