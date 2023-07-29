@@ -5,11 +5,14 @@ unset storage
 unset media
 unset downloads
 unset jackett
+unset prowlarr
 unset emby
 unset plex
 unset jellyfin
 unset radarr
 unset sonarr
+unset bazarr
+unset requestrr
 unset transmission
 unset watchtower
 
@@ -139,6 +142,11 @@ if [[ "$yn" =~ ^[yY]*$ ]]; then
     jackett=$(bash ./modules/generators/jackett.sh)
 fi
 
+read -p "Use Prowlarr? [Y/n] " yn
+if [[ "$yn" =~ ^[yY]*$ ]]; then
+    prowlarr=$(bash ./modules/generators/prowlarr.sh)
+fi
+
 read -p "Use Sonarr? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     sonarr=$(bash ./modules/generators/sonarr.sh)
@@ -189,6 +197,7 @@ services:""" > ${appdata}/docker-compose.yml
 [ ${watchtower+x} ] && echo -e "$watchtower" >> ${appdata}/docker-compose.yml
 [ ${filebrowser+x} ] && echo -e "$filebrowser" >> ${appdata}/docker-compose.yml
 [ ${jackett+x} ] && echo -e "$jackett" >> ${appdata}/docker-compose.yml
+[ ${prowlarr+x} ] && echo -e "$prowlarr" >> ${appdata}/docker-compose.yml
 [ ${sonarr+x} ] && echo -e "$sonarr" >> ${appdata}/docker-compose.yml
 [ ${radarr+x} ] && echo -e "$radarr" >> ${appdata}/docker-compose.yml
 [ ${bazarr+x} ] && echo -e "$bazarr" >> ${appdata}/docker-compose.yml
