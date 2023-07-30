@@ -12,7 +12,7 @@ unset jellyfin
 unset radarr
 unset sonarr
 unset bazarr
-unset requestrr
+unset doplarr
 unset transmission
 unset watchtower
 
@@ -137,37 +137,37 @@ if [[ "$yn" =~ ^[yY]*$ ]]; then
     bash ./modules/configurators/filebrowser.sh && export filebrowser=$(bash ./modules/generators/filebrowser.sh)
 fi
 
-read -p "Use Jackett? [Y/n] " yn
+read -p "Use Jackett (Search Engine)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     jackett=$(bash ./modules/generators/jackett.sh)
 fi
 
-read -p "Use Prowlarr? [Y/n] " yn
+read -p "Use Prowlarr (Alternate Search Engine - more setup, but better stats visibility)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     prowlarr=$(bash ./modules/generators/prowlarr.sh)
 fi
 
-read -p "Use Sonarr? [Y/n] " yn
+read -p "Use Sonarr (TV Series)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     sonarr=$(bash ./modules/generators/sonarr.sh)
 fi
 
-read -p "Use Radarr? [Y/n] " yn
+read -p "Use Radarr (Movies)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     radarr=$(bash ./modules/generators/radarr.sh)
 fi
 
-read -p "Use Bazarr? [Y/n] " yn
+read -p "Use Bazarr (Subtitles)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     bazarr=$(bash ./modules/generators/bazarr.sh)
 fi
 
-read -p "Use Requestrr? [Y/n] " yn
+read -p "Use Doplarr (Discord bot to handle requests)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
-    requestrr=$(bash ./modules/generators/requestrr.sh)
+    doplarr=$(bash ./modules/generators/doplarr.sh)
 fi
 
-read -p "Use Transmission? [Y/n] " yn
+read -p "Use Transmission (Download client)? [Y/n] " yn
 if [[ "$yn" =~ ^[yY]*$ ]]; then
     source ./modules/configurators/transmission.sh && export transmission=$(bash ./modules/generators/transmission.sh)
 fi
@@ -201,7 +201,7 @@ services:""" > ${appdata}/docker-compose.yml
 [ ${sonarr+x} ] && echo -e "$sonarr" >> ${appdata}/docker-compose.yml
 [ ${radarr+x} ] && echo -e "$radarr" >> ${appdata}/docker-compose.yml
 [ ${bazarr+x} ] && echo -e "$bazarr" >> ${appdata}/docker-compose.yml
-[ ${requestrr+x} ] && echo -e "$requestrr" >> ${appdata}/docker-compose.yml
+[ ${doplarr+x} ] && echo -e "$doplarr" >> ${appdata}/docker-compose.yml
 [ ${transmission+x} ] && echo -e "$transmission" >> ${appdata}/docker-compose.yml
 [ ${emby+x} ] && echo -e "$emby" >> ${appdata}/docker-compose.yml
 [ ${jellyfin+x} ] && echo -e "$jellyfin" >> ${appdata}/docker-compose.yml
