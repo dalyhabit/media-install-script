@@ -3,8 +3,6 @@
 ## Introduction
 This project was originally forked from [https://gitlab.com/mediaguides/media-install-script/](https://gitlab.com/mediaguides/media-install-script/).
 
-This guide is a successor to this [original guide available on r/Piracy](https://www.reddit.com/r/Piracy/comments/ma1hlm/the_complete_guide_to_building_your_own_personal/) and is designed to be more user-friendly and cost accessible. However, it is worth reading through the first guide to better understand what you're trying to accomplish by running the install script included in this project.
-
 The install script is compatible with any Ubuntu host, not just the Raspberry Pi.  If you have an extra PC around and would prefer to use that instead, follow the [official Ubuntu server install guide](https://ubuntu.com/tutorials/install-ubuntu-server) and skip to [running the install script](#running the install script).
 
 If you have any critiques or suggestions, please leave a comment so that I can continue to improve this guide.
