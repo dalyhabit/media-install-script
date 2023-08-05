@@ -26,6 +26,4 @@ echo -e """  doplarr:
       # - JAVA_OPTS= #optional
     volumes:
       - ${config}/doplarr:/config
-    ports:
-      - 9696:9696
     restart: unless-stopped"""
